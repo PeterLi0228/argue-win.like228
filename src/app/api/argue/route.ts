@@ -3,11 +3,18 @@ import OpenAI from 'openai';
 
 const client = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: "REMOVED_SECRET",
+  apiKey: process.env.OPENROUTER_API_KEY,
 });
 
 export async function POST(request: NextRequest) {
   try {
+    // 检查 API Key 是否配置
+    if (!process.env.OPENROUTER_API_KEY) {
+      return NextResponse.json(
+        { error: 'API Key 未配置，请联系管理员' },
+        { status: 500 }
+      );
+    }
     // 检查请求体是否为空
     const body = await request.text();
     if (!body) {

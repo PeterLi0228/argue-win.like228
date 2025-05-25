@@ -61,12 +61,20 @@ npm start
 
 ### 环境变量
 
-创建 `.env.local` 文件：
+⚠️ **重要安全提醒**：请勿将 API Key 直接写在代码中！
 
+1. 复制 `.env.example` 文件为 `.env.local`：
+```bash
+cp .env.example .env.local
+```
+
+2. 编辑 `.env.local` 文件，填入你的真实 API Key：
 ```env
-OPENROUTER_API_KEY=your_openrouter_api_key
+OPENROUTER_API_KEY=your_actual_openrouter_api_key
 NEXT_PUBLIC_SITE_URL=your_site_url
 ```
+
+3. `.env.local` 文件已被 `.gitignore` 忽略，不会被推送到 GitHub
 
 ### API 配置
 
