@@ -36,68 +36,373 @@ body {
   }
 }
 
-/* 滑块样式优化 */
-.slider {
+/* 强度滑块样式优化 */
+.intensity-slider {
   -webkit-appearance: none;
   appearance: none;
-  height: 6px;
-  border-radius: 3px;
+  height: 8px;
+  border-radius: 4px;
   outline: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.slider:hover {
-  opacity: 1;
+.intensity-slider:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.slider::-webkit-slider-thumb {
+.intensity-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #10b981;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
+  border: 2px solid white;
 }
 
-.slider::-webkit-slider-thumb:hover {
+.intensity-slider::-webkit-slider-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6);
 }
 
-.slider::-moz-range-thumb {
+.intensity-slider::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+.intensity-slider::-moz-range-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: #10b981;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   cursor: pointer;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  transition: all 0.2s ease;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s ease;
 }
 
-.slider::-moz-range-thumb:hover {
+.intensity-slider::-moz-range-thumb:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-}
-
-/* 微信风格的按钮动画 */
-.wechat-button {
-  transition: all 0.2s ease;
-}
-
-.wechat-button:active {
-  transform: scale(0.98);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6);
 }
 
 /* 复制按钮动画 */
 .copy-button {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .copy-button:hover {
-  background-color: rgba(16, 185, 129, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+/* 震动动画 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* 渐入动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 脉冲动画增强 */
+@keyframes pulse-enhanced {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-enhanced {
+  animation: pulse-enhanced 2s infinite;
+}
+
+/* 毛玻璃效果 */
+.backdrop-blur-glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* 渐变文字动画 */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* 浮动动画 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* 按钮点击效果 */
+.button-press {
+  transition: all 0.2s ease;
+}
+
+.button-press:active {
+  transform: scale(0.95);
+}
+
+/* 文本区域样式增强 */
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+/* 响应式优化 - 卡片式布局 */
+@media (max-width: 768px) {
+  .max-w-2xl {
+    max-width: 95%;
+  }
+  
+  .px-8 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .py-6 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .p-8 {
+    padding: 1.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .space-x-6 > * + * {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .max-w-2xl {
+    max-width: 98%;
+  }
+  
+  .px-8 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .p-8 {
+    padding: 1rem;
+  }
+  
+  .space-x-6 > * + * {
+    margin-left: 0.75rem;
+  }
+  
+  .text-sm {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+/* 主卡片样式增强 */
+.main-card {
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* 加载动画增强 */
+@keyframes spin-enhanced {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-enhanced {
+  animation: spin-enhanced 1s linear infinite;
+}
+
+/* 成功状态动画 */
+@keyframes success-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-success {
+  animation: success-bounce 0.6s ease;
+}
+
+/* 输入框字符计数样式 */
+.char-counter {
+  transition: all 0.3s ease;
+}
+
+.char-counter.warning {
+  color: #f59e0b;
+}
+
+.char-counter.danger {
+  color: #ef4444;
+}
+
+/* 特色卡片动画 */
+.feature-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 结果卡片动画 */
+.result-card {
+  animation: fadeInUp 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* 防止文字重叠 */
+.space-y-1 > * + * {
+  margin-top: 0.25rem;
+}
+
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+
+/* 确保文字有足够的行高 */
+.leading-relaxed {
+  line-height: 1.625;
+}
+
+/* 优化按钮和交互元素的最小尺寸 */
+button {
+  min-height: 44px; /* 触摸友好的最小尺寸 */
+}
+
+/* 确保卡片内容不会溢出 */
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl {
+  overflow: hidden;
+}
+
+/* 居中布局优化 */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+/* 确保卡片在小屏幕上的最小高度 */
+@media (max-height: 600px) {
+  .min-h-screen {
+    min-height: auto;
+  }
+  
+  .py-8 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
 }
